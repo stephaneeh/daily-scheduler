@@ -2,49 +2,25 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-    // TODO: Add a listener for click events on the save button. This code should
-    // use the id in the containing time-block as a key to save the user input in
-    // local storage. HINT: What does `this` reference in the click listener
-    // function? How can DOM traversal be used to get the "hour-x" id of the
-    // time-block containing the button that was clicked? How might the id be
-    // useful when saving the description in local storage?
+
+    var calendarArray = JSON.parse(localStorage.getItem("calendarArray")) || [];
+        
+    // TODO: SECTON 1: SAVE BUTTON/STORE LOCAL - COMPLETE
     $(".saveBtn").on("click", function (e) {
         e.preventDefault();
-        
-        var calendarArray = JSON.parse(localStorage.getItem("calendarArray")) || [];
         var time = $(this).parent().attr("id");
-        var activity = $(this).siblings(".description").val();
-
+        var activity = $(this).siblings(".description").val(); 
         var calendar = {
             time: time,
             activity: activity,
         };
-        
+            
         calendarArray.push(calendar);
         localStorage.setItem("calendarArray", JSON.stringify(calendarArray));
         
- 
-    
     });
 
-
-    // localStorage.getItem
-
-
-
-
-    // TODO: Add code to get any user input that was saved in localStorage and set
-    // the values of the corresponding textarea elements. HINT: How can the id
-    // attribute of each time-block be used to do this?
-    //
-
-
-
-
-
-
-    // COMPLETE
-    // TODO: SECTION 2 - PAST/PRESENT/FUTURE ATTRIBUTES
+    // TODO: SECTION 2 - PAST/PRESENT/FUTURE ATTRIBUTES - COMPLETE
     $(".time-block").each(function () {
         //set hour to the current time in 24 hour
         var hour = dayjs().hour(); 
@@ -64,13 +40,31 @@ $(function () {
             $(this).removeClass("past");
             $(this).removeClass("present");
             $(this).addClass("future");
-        }
+        };
     });
 
-    //COMPLETE
-    //TODO: SECTION 1 - SET CURRENT DATE
+    // For each timeblock
+    $(".time-block").each(function () {
+        var timeBlock = $(this).attr("id"); //parent
+        var localTime = JSON.parse(localStorage.getItem("calendarArray"));
+
+        for (let i=0; i<calendarArray.length; i++){
+            if (timeBlock==(localTime[i].time)) {
+              console.log(localTime[i].time);
+              var message = localTime[i].activity;
+            //   console.log($("#"+timeBlock).children(1));
+              $("#"+timeBlock).children(1).text(message);
+            } else {
+                console.log("is broken - fix me")
+            }
+        };
+    });
+
+
+    // window.localStorage.clear();
+
+    //TODO: SECTION 4 - SET CURRENT DATE - COMPLETE
     //FIXME: ordinal value of date is not working properly (1st, 5th, etc)
     var rightNow = dayjs().format('dddd D MMM, YYYY');
     $("#currentDay").text(rightNow);
   });
-
