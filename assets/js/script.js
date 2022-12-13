@@ -53,7 +53,7 @@ $(function () {
               console.log(localTime[i].time);
               var message = localTime[i].activity;
             //   console.log($("#"+timeBlock).children(1));
-              $("#"+timeBlock).children(1).text(message);
+              $("#"+timeBlock).children(".description").text(message);
             } else {
                 console.log("is broken - fix me")
             }
