@@ -5,7 +5,6 @@ This is a simple calendar application that allows a user to save events for each
 
 This is a simple calendar application that allows a user to save events for each hour of the day, made using the Day.js library
 
-
 ## Structure
 
 - `index.html` Entry point for the application, configures the landing page and welcome content
@@ -14,13 +13,11 @@ This is a simple calendar application that allows a user to save events for each
 
 ## Application
 
-Check out the Daily Scheduler here - 
+Check out the Daily Scheduler here - https://stephaneeh.github.io/daily-scheduler/
 
 ## Screenshots of application
 
-
-
-
+<img width="1174" alt="Screenshot 2022-12-15 at 10 52 19 pm" src="https://user-images.githubusercontent.com/28996399/207863775-ece6f296-d995-4296-982e-8c947afca9dd.png">
 
 ## License
 [MIT](LICENSE)
